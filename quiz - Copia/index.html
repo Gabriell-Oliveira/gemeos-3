@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio 3: Quiz Relâmpago - Santo André</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="challenge-header">
+    <div class="challenge-number">🏆 DESAFIO 3 DE 4</div>
+    <h1>⚡ Quiz Relâmpago</h1>
+    <p class="challenge-subtitle">Você tem 30 segundos!</p>
+  </div>
+
+  <div class="game-container">
+    <div class="instructions">
+      <p><strong>Atenção!</strong> Leia com cuidado e responda rápido!</p>
+      <p>Uma única pergunta. Cinco alternativas. O tempo está correndo! ⏱️</p>
+    </div>
+
+    <!-- Timer Visual -->
+    <div class="timer-container">
+      <div class="timer-circle" id="timer-circle">
+        <svg class="timer-svg" viewBox="0 0 100 100">
+          <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+          <circle class="timer-progress" id="timer-progress" cx="50" cy="50" r="45"></circle>
+        </svg>
+        <div class="timer-text">
+          <div class="timer-number" id="timer-number">30</div>
+          <div class="timer-label">segundos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pergunta -->
+    <div class="question-box" id="question-box">
+      <div class="question-icon">❓</div>
+      <h2 class="question-text" id="question-text">
+        Santo que foi discípulo de João Batista, através dele conheceu Jesus e foi o primeiro a ser chamado. Foi martirizado numa cruz em forma de X.
+      </h2>
+    </div>
+
+    <!-- Alternativas (Grid 2x2) -->
+    <div class="alternatives-grid" id="alternatives">
+      <button class="alternative" onclick="selecionarAlternativa(this, 'Tiago')">
+        <span class="alt-letter">A</span>
+        <span class="alt-text">São Tiago</span>
+      </button>
+      <button class="alternative" onclick="selecionarAlternativa(this, 'André')">
+        <span class="alt-letter">B</span>
+        <span class="alt-text">Santo André</span>
+      </button>
+      <button class="alternative" onclick="selecionarAlternativa(this, 'Pedro')">
+        <span class="alt-letter">C</span>
+        <span class="alt-text">São Pedro</span>
+      </button>
+      <button class="alternative" onclick="selecionarAlternativa(this, 'João')">
+        <span class="alt-letter">D</span>
+        <span class="alt-text">São João</span>
+      </button>
+    </div>
+
+    <!-- Mensagem de Resultado -->
+    <div class="message" id="mensagem"></div>
+
+    <!-- Botão Reiniciar (escondido inicialmente) -->
+    <button class="restart-button hidden" id="restart-btn" onclick="reiniciarJogo()">
+      🔄 Tentar Novamente
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio 2: Associação - Livros Bíblicos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="challenge-header">
+    <div class="challenge-number">🏆 DESAFIO 2 DE 4</div>
+    <h1>🔗 Jogo de Associação</h1>
+    <p class="challenge-subtitle">Livros da Bíblia</p>
+  </div>
+
+  <div class="game-container">
+    <div class="instructions">
+      <p><strong>Como jogar:</strong> Conecte cada descrição ao livro correto!</p>
+      <p>Clique em uma descrição e depois no livro correspondente. Você tem <span class="lives-text">💚💚💚 3 vidas</span>!</p>
+    </div>
+
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-title">Vidas Restantes</div>
+        <div class="stat-value lives" id="vidas">💚💚💚</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">Associações Corretas</div>
+        <div class="stat-value pairs" id="acertos">0 / 5</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="association-board">
+      <!-- Coluna Esquerda: Descrições -->
+      <div class="column left-column" id="descricoes">
+        <h3 class="column-title">📖 Descrições</h3>
+        <div class="cards-container" id="cards-descricoes"></div>
+      </div>
+
+      <!-- Canvas para desenhar linhas -->
+      <svg class="connections-svg" id="svg-lines"></svg>
+
+      <!-- Coluna Direita: Livros -->
+      <div class="column right-column" id="livros">
+        <h3 class="column-title">📚 Livros</h3>
+        <div class="cards-container" id="cards-livros"></div>
+      </div>
+    </div>
+
+    <div class="message" id="mensagem"></div>
+
+    <button class="restart-button" onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

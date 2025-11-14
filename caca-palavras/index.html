@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio 4: Caça-Palavras - São Pedro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="challenge-header">
+    <div class="challenge-number">🏆 DESAFIO 4 DE 4 - FINAL</div>
+    <h1>🔍 Caça-Palavras</h1>
+    <p class="challenge-subtitle">São Pedro - O Apóstolo</p>
+  </div>
+
+  <div class="game-container">
+    <div class="instructions">
+      <p><strong>Como jogar:</strong> Encontre as 4 palavras relacionadas a São Pedro!</p>
+      <p>Clique e arraste sobre as letras para selecionar. As palavras podem estar na horizontal, vertical ou diagonal! 🎯</p>
+    </div>
+
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-title">Palavras Encontradas</div>
+        <div class="stat-value found" id="palavras-encontradas">0 / 4</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="game-board">
+      <!-- Grade do Caça-Palavras -->
+      <div class="grid-container" id="grid"></div>
+
+      <!-- Lista de Palavras -->
+      <div class="words-list">
+        <h3 class="words-title">📋 Palavras para Encontrar:</h3>
+        <div class="words-container" id="words-list">
+          <div class="word-item" data-word="APOSTOLO">
+            <span class="word-check">☐</span>
+            <span class="word-text">APÓSTOLO</span>
+          </div>
+          <div class="word-item" data-word="PESCADOR">
+            <span class="word-check">☐</span>
+            <span class="word-text">PESCADOR</span>
+          </div>
+          <div class="word-item" data-word="PAPA">
+            <span class="word-check">☐</span>
+            <span class="word-text">PAPA</span>
+          </div>
+          <div class="word-item" data-word="IMPULSIVO">
+            <span class="word-check">☐</span>
+            <span class="word-text">IMPULSIVO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message" id="mensagem"></div>
+
+    <button class="restart-button" onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

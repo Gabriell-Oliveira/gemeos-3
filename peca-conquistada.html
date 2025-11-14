@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peça Conquistada!</title>
+  <link rel="stylesheet" href="peca-style.css">
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="container">
+    <div class="success-icon">🎉</div>
+    
+    <h1 class="title">PARABÉNS!</h1>
+    <p class="subtitle">Você conquistou a peça <span id="peca-numero">1</span> de 4!</p>
+
+    <!-- Peça do Quebra-Cabeça (preta com número) -->
+    <div class="puzzle-piece-container">
+      <div class="puzzle-piece" id="puzzle-piece">
+        <div class="piece-number" id="piece-number">1</div>
+        <div class="piece-icon">🧩</div>
+      </div>
+    </div>
+
+    <!-- Progresso -->
+    <div class="progress-container">
+      <div class="progress-text">Progresso da Aventura</div>
+      <div class="pieces-collected">
+        <div class="mini-piece collected" data-piece="1">1</div>
+        <div class="mini-piece locked" data-piece="2">2</div>
+        <div class="mini-piece locked" data-piece="3">3</div>
+        <div class="mini-piece locked" data-piece="4">4</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Mensagem Motivacional -->
+    <div class="message-box">
+      <p id="motivational-message">Continue assim! Cada peça te aproxima da grande revelação! ✨</p>
+    </div>
+
+    <!-- Botão Continuar -->
+    <button class="continue-button" id="continue-btn" onclick="proximoDesafio()">
+      🚀 Continuar Aventura
+    </button>
+  </div>
+
+  <script src="peca-script.js"></script>
+</body>
+</html>

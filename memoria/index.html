@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio 1: Jogo da Memória - Santos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="challenge-header">
+    <div class="challenge-number">🏆 DESAFIO 1 DE 4</div>
+    <h1>🧠 Jogo da Memória</h1>
+    <p class="challenge-subtitle">Santos da Igreja Católica</p>
+  </div>
+
+  <div class="game-container">
+    <div class="instructions">
+      <p><strong>Como jogar:</strong> Encontre todos os pares de santos!</p>
+      <p>Clique nas cartas para revelá-las e forme pares iguais! 🎯</p>
+    </div>
+
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-title">Pares Encontrados</div>
+        <div class="stat-value pairs-found" id="pares-encontrados">0 / 6</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-title">Tentativas</div>
+        <div class="stat-value attempts" id="tentativas">0</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="tabuleiro" id="tabuleiro"></div>
+    
+    <div class="message" id="mensagem"></div>
+
+    <button class="restart-button" onclick="reiniciarJogo()">🔄 Reiniciar Jogo</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
