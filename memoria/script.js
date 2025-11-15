@@ -1,11 +1,35 @@
 // ========== CONFIGURAÇÃO DOS SANTOS ==========
 const santos = [
-  { id: 1, nome: "Padre Pio", imagem: "../imagens/padre-pio.jpg" },
-  { id: 2, nome: "Santa Teresinha", imagem: "../imagens/santa-teresinha.jpg" },
-  { id: 3, nome: "São José", imagem: "../imagens/sao-jose.jpg" },
-  { id: 4, nome: "São João Paulo II", imagem: "../imagens/sao-joao-paulo-ii.jpg" },
-  { id: 5, nome: "São Francisco de Assis", imagem: "../imagens/sao-francisco.jpg" },
-  { id: 6, nome: "Santa Clara de Assis", imagem: "../imagens/santa-clara.jpg" }
+  { 
+    id: 1, 
+    nome: "Padre Pio", 
+    imagem: "../imagens/padre-pio.jpg" 
+  },
+  { 
+    id: 2, 
+    nome: "Santa Teresinha", 
+    imagem: "../imagens/santa-teresinha.jpg" 
+  },
+  { 
+    id: 3, 
+    nome: "São José", 
+    imagem: "../imagens/sao-jose.jpg" 
+  },
+  { 
+    id: 4, 
+    nome: "São João Paulo II", 
+    imagem: "../imagens/sao-joao-paulo-ii.jpg" 
+  },
+  { 
+    id: 5, 
+    nome: "São Francisco de Assis", 
+    imagem: "../imagens/sao-francisco.jpg" 
+  },
+  { 
+    id: 6, 
+    nome: "Santa Clara de Assis", 
+    imagem: "../imagens/santa-clara.jpg" 
+  }
 ];
 
 // ========== VARIÁVEIS DO JOGO ==========
@@ -22,6 +46,7 @@ let bloqueado = false;
 let paresEncontrados = 0;
 let tentativas = 0;
 
+// Criar array com pares duplicados
 let cartasEmbaralhadas = [...santos, ...santos];
 
 // ========== FUNÇÃO: EMBARALHAR ARRAY ==========
@@ -37,13 +62,15 @@ function embaralhar(array) {
 function criarTabuleiro() {
   tabuleiro.innerHTML = "";
   cartas = [];
-
+  
+  // Embaralhar cartas
   cartasEmbaralhadas = embaralhar([...santos, ...santos]);
 
   cartasEmbaralhadas.forEach((santo, index) => {
     const carta = document.createElement("div");
     carta.classList.add("carta");
     carta.dataset.id = santo.id;
+    carta.dataset.index = index;
 
     carta.innerHTML = `
       <div class="face frente"></div>
@@ -59,57 +86,59 @@ function criarTabuleiro() {
   });
 }
 
-// ========== FUNÇÃO: VIRAR CARTA ==========
+// ========== FUNÇÃO: VIRAR CARTA (CORRIGIDA!) ==========
 function virarCarta(carta, santo) {
-  if (bloqueado || carta.classList.contains("virada") || carta.classList.contains("matched")) {
-    return;
-  }
+  // Verificar se pode virar
+  if (bloqueado) return;
+  if (carta.classList.contains("virada")) return;
+  if (carta.classList.contains("matched")) return;
 
+  // Virar carta (SEMPRE vira quando clica)
   carta.classList.add("virada");
 
+  // Primeira carta
   if (!primeiraCarta) {
     primeiraCarta = { carta, santo };
-    return;
+    return; // Para aqui e espera a segunda carta
   }
 
+  // Segunda carta
   segundaCarta = { carta, santo };
-  bloqueado = true;
+  bloqueado = true; // Bloqueia novas viradas
   tentativas++;
   atualizarStats();
 
-  // --- Testar par ---
-  if (primeiraCarta.santo.id === segundaCarta.santo.id) {
-    // PAR CORRETO
-    setTimeout(() => {
+  // Verificar se é par APÓS 1 SEGUNDO (tempo para ver as duas cartas)
+  setTimeout(() => {
+    if (primeiraCarta.santo.id === segundaCarta.santo.id) {
+      // ✅ PAR CORRETO!
       primeiraCarta.carta.classList.add("matched");
       segundaCarta.carta.classList.add("matched");
+      
       paresEncontrados++;
       atualizarStats();
       resetarCartas();
 
-      // Vitória
+      // Verificar vitória
       if (paresEncontrados === santos.length) {
         setTimeout(mostrarVitoria, 500);
       }
-    }, 700);
-
-  } else {
-    // PAR ERRADO
-    setTimeout(() => {
+    } else {
+      // ❌ PAR ERRADO!
       primeiraCarta.carta.classList.add("wrong");
       segundaCarta.carta.classList.add("wrong");
 
+      // Espera 1 segundo mostrando o erro, depois desvira
       setTimeout(() => {
         primeiraCarta.carta.classList.remove("virada", "wrong");
         segundaCarta.carta.classList.remove("virada", "wrong");
         resetarCartas();
       }, 1000);
-
-    }, 700);
-  }
+    }
+  }, 1000); // ⏱️ 1 SEGUNDO para ver as duas cartas antes de verificar
 }
 
-// ========== FUNÇÃO: RESETAR ==========
+// ========== FUNÇÃO: RESETAR CARTAS SELECIONADAS ==========
 function resetarCartas() {
   primeiraCarta = null;
   segundaCarta = null;
@@ -121,7 +150,9 @@ function atualizarStats() {
   paresEncontradosEl.textContent = `${paresEncontrados} / ${santos.length}`;
   tentativasEl.textContent = tentativas;
 
-  progressEl.style.width = `${(paresEncontrados / santos.length) * 100}%`;
+  // Atualizar barra de progresso
+  const progresso = (paresEncontrados / santos.length) * 100;
+  progressEl.style.width = `${progresso}%`;
 }
 
 // ========== FUNÇÃO: MOSTRAR VITÓRIA ==========
@@ -129,9 +160,11 @@ function mostrarVitoria() {
   mensagemEl.textContent = `🏆 PARABÉNS! Você completou em ${tentativas} tentativas!`;
   mensagemEl.className = "message win";
 
+  // Salvar progresso
   localStorage.setItem('pecasConquistadas', '1');
   localStorage.setItem('desafioAtual', '2');
 
+  // Redirecionar para página da peça 1 após 2 segundos
   setTimeout(() => {
     window.location.href = '../pecas/peca-conquistada.html?peca=1';
   }, 2000);
@@ -144,16 +177,40 @@ function reiniciarJogo() {
   primeiraCarta = null;
   segundaCarta = null;
   bloqueado = false;
-
+  
   mensagemEl.textContent = "";
   mensagemEl.className = "message";
-
+  
   atualizarStats();
   criarTabuleiro();
+  
+  // Animação de entrada usando CLASSES (não inline!)
+  setTimeout(() => {
+    const todasCartas = document.querySelectorAll('.carta');
+    todasCartas.forEach((carta, index) => {
+      carta.classList.add('carta-entrada');
+      
+      setTimeout(() => {
+        carta.classList.add('carta-visivel');
+      }, 50 * index);
+    });
+  }, 50);
 }
 
-// ========== INICIALIZAR ==========
+// ========== INICIALIZAR JOGO ==========
 window.addEventListener("DOMContentLoaded", () => {
   criarTabuleiro();
   atualizarStats();
+  
+  // Animação de entrada usando CLASSES (não inline!)
+  setTimeout(() => {
+    const todasCartas = document.querySelectorAll('.carta');
+    todasCartas.forEach((carta, index) => {
+      carta.classList.add('carta-entrada');
+      
+      setTimeout(() => {
+        carta.classList.add('carta-visivel');
+      }, 50 * index);
+    });
+  }, 100);
 });

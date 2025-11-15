@@ -171,7 +171,7 @@ function finalizarSelecao() {
 
     if (palavrasEncontradas.length === 4) {
       alert("Você encontrou as 4 primeiras palavras! \nAgora descubra a 😶‍🌫️PALAVRA SECRETA😶‍🌫️ para conquistar a peça final!");
-      alert("DICA: A palavra secreta é a pessoa que possi todas essas características mencionadas nas palavras anteriores.");
+      alert("DICA: A palavra secreta é a pessoa que possui todas essas características mencionadas nas palavras anteriores.");
     }
 
     if (palavrasEncontradas.length === palavras.length) {
