@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quebra-Cabeça Final - Revelação dos Nomes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="confetti-container" id="confetti"></div>
+  
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🧩 QUEBRA-CABEÇA FINAL 🧩</h1>
+      <p class="subtitle">Monte o quebra-cabeça para revelar os nomes dos gêmeos!</p>
+    </div>
+
+    <!-- Contador de Peças -->
+    <div class="pieces-counter">
+      <span class="counter-label">Peças Encaixadas:</span>
+      <span class="counter-value" id="pecas-encaixadas">0 / 4</span>
+    </div>
+
+    <!-- Tabuleiro 2x2 -->
+    <div class="puzzle-board">
+      <div class="puzzle-slot" data-pos="1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="slot-number">1</span>
+      </div>
+      <div class="puzzle-slot" data-pos="3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="slot-number">3</span>
+      </div>
+      <div class="puzzle-slot" data-pos="2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="slot-number">2</span>
+      </div>
+      <div class="puzzle-slot" data-pos="4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="slot-number">4</span>
+      </div>
+    </div>
+
+    <!-- Área das Peças Disponíveis -->
+    <div class="pieces-area">
+      <h3 class="pieces-title">🏆 SUAS PEÇAS CONQUISTADAS 🏆</h3>
+      <p class="pieces-instruction">Arraste as peças para o tabuleiro</p>
+      
+      <div class="pieces-container">
+        <div class="puzzle-piece" draggable="true" ondragstart="drag(event)" data-piece="1">
+          <div class="piece-content">
+            <span class="piece-number-display">1</span>
+          </div>
+        </div>
+        <div class="puzzle-piece" draggable="true" ondragstart="drag(event)" data-piece="2">
+          <div class="piece-content">
+            <span class="piece-number-display">2</span>
+          </div>
+        </div>
+        <div class="puzzle-piece" draggable="true" ondragstart="drag(event)" data-piece="3">
+          <div class="piece-content">
+            <span class="piece-number-display">3</span>
+          </div>
+        </div>
+        <div class="puzzle-piece" draggable="true" ondragstart="drag(event)" data-piece="4">
+          <div class="piece-content">
+            <span class="piece-number-display">4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensagem de Status -->
+    <div class="status-message" id="status-message"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

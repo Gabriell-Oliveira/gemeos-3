@@ -205,7 +205,7 @@ function mostrarVitoria() {
 
   // Redirecionar para página da peça 4 após 2 segundos
   setTimeout(() => {
-    window.location.href = '../pecas/peca-conquistada.html?peca=4';
+    window.location.href = '../mensagem/index.html';
   }, 2000);
 }
 

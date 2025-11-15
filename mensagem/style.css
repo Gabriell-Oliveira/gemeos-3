@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Estrelas de fundo */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.celebration-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  line-height: 1.3;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  font-weight: 400;
+  color: #B8C6DB;
+}
+
+/* Caixa da Bíblia */
+.bible-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  border-radius: 25px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.bible-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.bible-icon {
+  font-size: 2.5rem;
+}
+
+.bible-reference {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+}
+
+.bible-text {
+  font-size: 1.25rem;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+}
+
+.bible-text p {
+  margin-bottom: 1.5rem;
+}
+
+.bible-text strong {
+  color: #4ECDC4;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+}
+
+.bible-text em {
+  color: #FFA500;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Indicador de Peças */
+.pieces-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  animation: slideUp 0.8s ease-out 0.5s both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.piece-mini {
+  font-size: 3rem;
+  animation: bounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(255, 215, 0, 0.4));
+}
+
+.piece-mini:nth-child(1) { animation-delay: 0s; }
+.piece-mini:nth-child(2) { animation-delay: 0.2s; }
+.piece-mini:nth-child(3) { animation-delay: 0.4s; }
+.piece-mini:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.1); }
+}
+
+/* Botão Revelar */
+.reveal-button {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  border: none;
+  padding: 22px 55px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.8s ease-out 0.8s both;
+}
+
+.reveal-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s;
+}
+
+.reveal-button:hover::before {
+  left: 100%;
+}
+
+.reveal-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+}
+
+.reveal-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .bible-box {
+    padding: 1.5rem;
+  }
+
+  .bible-reference {
+    font-size: 1.2rem;
+  }
+
+  .bible-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .bible-text strong {
+    font-size: 1.2rem;
+  }
+
+  .piece-mini {
+    font-size: 2.5rem;
+  }
+
+  .reveal-button {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .celebration-icon {
+    font-size: 4rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .bible-text {
+    font-size: 0.95rem;
+  }
+
+  .pieces-indicator {
+    gap: 1rem;
+  }
+
+  .piece-mini {
+    font-size: 2rem;
+  }
+}
