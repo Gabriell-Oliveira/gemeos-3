@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindos - Gêmeos Xavier Calmon</title>
+  <link rel="stylesheet" href="intro-style.css">
+</head>
+<body>
+  <div class="intro-container">
+    <!-- Ícone de celebração animado -->
+    <div class="celebration-icon">🎉</div>
+    
+    <!-- Título de boas-vindas -->
+    <h1 class="welcome-title">Bem-vindos à Aventura!</h1>
+    <p class="welcome-subtitle">Prepare-se para descobrir nossos nomes</p>
+
+    <!-- Container do vídeo -->
+    <div class="video-container">
+      <video 
+        id="intro-video" 
+        class="intro-video"
+        controls
+        preload="metadata">
+        <source src="videos/video.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+      </video>
+    </div>
+
+    <!-- Indicador de progresso do vídeo -->
+    <div class="video-progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="video-progress"></div>
+      </div>
+      <p class="progress-text" id="progress-text">Aguarde o vídeo carregar...</p>
+    </div>
+
+    <!-- Botões de ação -->
+    <div class="action-buttons">
+      <!-- Botão para pular vídeo -->
+      <button class="skip-button" onclick="pularVideo()">
+        ⏭️ Pular Introdução
+      </button>
+
+      <!-- Botão para iniciar (aparece após vídeo terminar) -->
+      <button class="start-button hidden" id="start-button" onclick="iniciarAventura()">
+        🚀 COMEÇAR AGORA
+      </button>
+    </div>
+
+    <!-- Link de ajuda -->
+    <p class="help-text">
+      <small>💡 Assista ao vídeo para entender melhor a aventura!</small>
+    </p>
+  </div>
+
+  <script src="intro-script.js"></script>
+</body>
+</html>
